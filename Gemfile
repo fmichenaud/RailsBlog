@@ -18,9 +18,14 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-gem 'rmagick'
-
+# Use rmagick for image
+gem 'rmagick' 
+# Use devise for Users auth
 gem 'devise'
+# Use carrierwave for uploading files
+gem 'carrierwave'
+
+
 
 gem 'materialize-sass'
 
