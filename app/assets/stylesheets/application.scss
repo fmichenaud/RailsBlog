@@ -1,2 +1,9 @@
+@import "materialize/components/color";
+$primary: color("blue", "lighten-2") !default;
+$secondary: color("red", "lighten-2") !default;
 @import "materialize";
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+.parallax-container {
+  height: 300px;
+}
