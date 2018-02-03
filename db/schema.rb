@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20180203192342) do
     t.string "title"
     t.date "published"
     t.text "heading"
+    t.text "text"
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
