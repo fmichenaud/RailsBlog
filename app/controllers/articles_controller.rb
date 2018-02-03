@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+    before_action :require_permission, only: [:edit, :destroy, :update]
     def index
         @articles = Article.all
     end
@@ -22,7 +23,6 @@ class ArticlesController < ApplicationController
 
     def new
         @article = Article.new
-        
     end
 
     def create
@@ -44,5 +44,11 @@ class ArticlesController < ApplicationController
     private
         def article_params
             params.require(:article).permit(:title, :published, :user_id, :text, :heading, :image)
+        end
+        def require_permission
+            @userPermission = Article.find(params[:id]).user
+            if current_user != @userPermission
+                redirect_to root_path
+            end
         end
 end
