@@ -1,22 +1,9 @@
-<%= link_to "New user", new_user_registration_path %>
-
-<% if user_signed_in? %>
-  <li>
-  <p>Bienvenue  <%= link_to user_path(current_user) do current_user.name end %></p>
- 
-  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>    
-  <%= link_to "Edit user", edit_user_path(current_user) %>    
-  </li>
-<% else %>
-  <li>
-  <%= link_to('Login', new_user_session_path)  %>  
-  </li>
-<% end %>
 
 
 <h1>Listing articles</h1>
-
+<% if user_signed_in? %>
   <%= link_to 'New article', new_article_path %>
+<% end %>
 
   <% @articles.each do |article| %>
 
@@ -26,7 +13,7 @@
     Date publication :  <%= article.published %><br>
       Image :  <img src="<%= article.image %>"/> <br>
             <%= link_to 'Show More', article_path(article) %>
-      <%- if current_user == @userPermission %>
+      <%- if current_user == @userPermission && user_signed_in? %>
       <%= link_to 'Edit', edit_article_path(article) %>
             <%= link_to 'Destroy', article_path(article),
               method: :delete,

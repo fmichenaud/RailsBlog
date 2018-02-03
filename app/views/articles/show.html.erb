@@ -22,7 +22,7 @@
 <p>
     Photo : <img src="<%= @article.image %>"/>
 </p>
-      <%- if current_user == @userPermission %>
+      <%- if current_user == @userPermission && user_signed_in? %>
 <%= link_to 'Edit', edit_article_path(@article) %> |
 <%= link_to 'Destroy', article_path(@article),
               method: :delete,

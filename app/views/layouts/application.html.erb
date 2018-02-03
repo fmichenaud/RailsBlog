@@ -11,15 +11,20 @@
   <body>
     <nav>
       <div class="nav-wrapper">
-        <a href="" class="brand-logo center">Blog</a>
+        <div class="brand-logo center"><%= link_to "Blog", root_path %></div>
         <ul id="nav-mobile" class="left hide-on-med-and-down">
           <li><a href="">Sass</a></li>
           <li><a href="">Components</a></li>
         </ul>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="">Sign in</a></li>
-          <li><a href="">Sign up</a></li>
-        </ul>
+        <% if user_signed_in? %>
+          <li><%= link_to user_path(current_user) do current_user.name end %></li>
+          <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+        <% else %>
+          <li><%= link_to('Login', new_user_session_path)  %></li>
+          <li><%= link_to "Register", new_user_registration_path %></li>
+         </ul>
+         <% end %>
       </div>
     </nav>
 

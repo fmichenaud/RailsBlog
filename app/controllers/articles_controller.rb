@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
     before_action :require_permission, only: [:edit, :destroy, :update]
+    before_action :authenticate_user!, :except => [:show, :index]
+
     def index
         @articles = Article.all
     end
