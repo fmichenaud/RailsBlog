@@ -26,7 +26,7 @@ class ArticlesController < ApplicationController
     end
 
     def create
-        @article = Article.new(article_params)
+        @article = Article.new(article_params.merge(user_id: current_user.id))
         if @article.save
         redirect_to @article, notice: "L'article a bien été publié"
         else
@@ -43,6 +43,6 @@ class ArticlesController < ApplicationController
 
     private
         def article_params
-            params.require(:article).permit(:title, :published, :heading, :image)
+            params.require(:article).permit(:title, :published, :user_id, :heading, :image)
         end
 end
