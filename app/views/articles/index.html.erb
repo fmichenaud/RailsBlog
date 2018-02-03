@@ -13,7 +13,7 @@
     Date publication :  <%= article.published %><br>
       Image :  <img src="<%= article.image %>"/> <br>
             <%= link_to 'Show More', article_path(article) %>
-      <%- if current_user == @userPermission && user_signed_in? %>
+      <%- if current_user == article.user && user_signed_in? %>
       <%= link_to 'Edit', edit_article_path(article) %>
             <%= link_to 'Destroy', article_path(article),
               method: :delete,
