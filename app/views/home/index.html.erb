@@ -5,7 +5,21 @@
         <span class="card-title">Card Title</span>
       </div>
       <div class="card-content">
-        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+      <%= link_to "New user", new_user_registration_path %>
+
+<% if user_signed_in? %>
+  <li>
+  <p>Bienvenue  <%= link_to user_path(current_user) do current_user.name end %></p>
+ 
+  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>    
+  <%= link_to "Edit user", edit_user_path(current_user) %>    
+  </li>
+<% else %>
+  <li>
+  <%= link_to('Login', new_user_session_path)  %>  
+  </li>
+<% end %>
+
       </div>
       <div class="card-action">
         <%= link_to 'My Blog', controller: 'articles' %>
