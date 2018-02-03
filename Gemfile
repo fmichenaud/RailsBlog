@@ -20,6 +20,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 # Use rmagick for image
 gem 'rmagick' 
+gem "mini_magick"
 # Use devise for Users auth
 gem 'devise'
 # Use carrierwave for uploading files

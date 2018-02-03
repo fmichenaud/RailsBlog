@@ -22,12 +22,13 @@ class ArticlesController < ApplicationController
 
     def new
         @article = Article.new
+        
     end
 
     def create
         @article = Article.new(article_params)
         if @article.save
-        redirect_to @article
+        redirect_to @article, notice: "L'article a bien été publié"
         else
             render 'new'
         end
@@ -36,12 +37,12 @@ class ArticlesController < ApplicationController
     def destroy
         @article = Article.find(params[:id])
         @article.destroy
- 
-        redirect_to articles_path
+
+        redirect_to articles_path, notice: "L'article a bien été supprimé"
     end
 
     private
         def article_params
-            params.require(:article).permit(:title, :published, :heading)
+            params.require(:article).permit(:title, :published, :heading, :image)
         end
 end
