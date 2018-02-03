@@ -2,9 +2,11 @@ class UsersController < ApplicationController
 	before_action :user_find, only:[:show, :update, :edit, :destroy]
 	before_action :authenticate_user!
 
-
 	def index
 		@users = User.all
+	end
+	def show
+		@user = User.find(params[:id])
 	end
 	def new
 		@user = User.new

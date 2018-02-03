@@ -1,4 +1,4 @@
-      <h1><%= link_to "New user", new_user_registration_path %></h1>
+<%= link_to "New user", new_user_registration_path %>
 
 <% if user_signed_in? %>
   <li>
@@ -22,7 +22,7 @@
 
      <div>Titre : <%= article.title %> <br>
      Text : <%= article.heading %><br>
-     Auteur : <%= article.user.name %><br>
+     Auteur : <%= link_to user_path(article.user) do  article.user.name end %><br>
     Date publication :  <%= article.published %><br>
       Image :  <img src="<%= article.image %>"/>
       <%= link_to 'Show', article_path(article) %>

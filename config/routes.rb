@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: :registrations}
   get 'home/index'
 
-  resources :articles, path:'/'
+  resources :articles, path:'/articles/'
   resources :users 
   
   root 'home#index'
