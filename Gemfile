@@ -19,12 +19,8 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 # Use rmagick for image
-<<<<<<< HEAD
 gem 'rmagick'
-=======
-gem 'rmagick' 
 gem "mini_magick"
->>>>>>> 9c98c3281933b0f69ee456387633dc871b7556c9
 # Use devise for Users auth
 gem 'devise'
 # Use carrierwave for uploading files
