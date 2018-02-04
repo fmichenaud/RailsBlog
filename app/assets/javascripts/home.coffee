@@ -3,4 +3,4 @@
 # You can use CoffeeScript in this file:
 
 window.onload = ->
-  $('.parallax').parallax();
+  $(".button-collapse").sideNav();

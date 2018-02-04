@@ -6,30 +6,32 @@
           <img src="<%= article.image.small %>">
           <span class="card-title"><%= article.title %></span>
           <%- if current_user == article.user && user_signed_in? %>
-          <div class="fixed-action-btn vertical click-to-toggle" style="position: absolute; right: 19px;">
-            <a class="btn-floating btn-large red">
-              <i class="material-icons">menu</i>
-            </a>
-            <ul>
-              <li><a class="btn-floating red"><i class="material-icons">edit</i><%= link_to 'Edit', edit_article_path(article) %></a>
-              </li>
-              <li><a class="btn-floating blue"><i class="material-icons">delete</i><%= link_to 'Destroy', article_path(article),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></a>
-              </li>
-            </ul>
+            <div class="fixed-action-btn vertical click-to-toggle" style="position: absolute; right: 19px;">
+              <a class="btn-floating btn-large red">
+                <i class="material-icons">menu</i>
+              </a>
+              <ul>
+                <li>
+                  <a class="btn-floating red">
+                    <i class="material-icons">edit</i><%= link_to 'Edit', edit_article_path(article) %></a>
+                </li>
+                <li>
+                  <a class="btn-floating blue">
+                    <i class="material-icons">delete</i><%= link_to 'Destroy', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %></a>
+                </li>
+              </ul>
+            </div>
+            <%- end %>
+            </div>
+            <div class="card-content">
+              <p><%= article.heading %></p>
+              <p>Publié le :
+                <%= article.created_at_before_type_cast %>
+              </div>
+              <div class="card-action">
+                <%= link_to 'Lire la suite', article_path(article) %>
+              </div>
+            </div>
           </div>
-          <%- end %>
-        </div>
-        <div class="card-content">
-          <p><%= article.heading %></p>
-          <p>Publié le : <%= article.created_at_before_type_cast %>
-        </div>
-        <div class="card-action">
-        <%= link_to 'Lire la suite', article_path(article) %>
-        </div>
+        <% end %>
       </div>
-    </div>
-    <% end %>
-  </div>
-            

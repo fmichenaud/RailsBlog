@@ -4,7 +4,7 @@
     <title>RailsBlog</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -12,26 +12,31 @@
     <nav>
       <div class="nav-wrapper">
         <div class="brand-logo center"><%= link_to "Blog", root_path %></div>
-        <ul id="nav-mobile" class="left hide-on-med-and-down">
-          <li><a href="">Sass</a></li>
-          <li><a href="">Components</a></li>
-        </ul>
+        <a href="#" data-activates="mobile-demo" class="button-collapse">
+          <i class="material-icons">menu</i>
+        </a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <% if user_signed_in? %>
-        <li><%= link_to 'New article', new_article_path, :class=>"waves-effect waves-red red accent-4 btn-large" %></li>
-          <li><%= link_to user_path(current_user) do current_user.name end %></li>
-          <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
-        <% else %>
-          <li><%= link_to('Login', new_user_session_path)  %></li>
-          <li><%= link_to "Register", new_user_registration_path %></li>
-         </ul>
-         <% end %>
+          <% if user_signed_in? %>
+            <li><%= link_to 'New article', new_article_path, :class=>"waves-effect waves-red red accent-4 btn-large" %></li>
+            <li><%= link_to user_path(current_user) do current_user.name end %></li>
+            <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+          <% else %>
+            <li><%= link_to('Login', new_user_session_path) %></li>
+            <li><%= link_to "Register", new_user_registration_path %></li>
+          <% end %>
+        </ul>
+        <ul id="mobile-demo" class="side-nav">
+          <% if user_signed_in? %>
+            <li><%= link_to 'New article', new_article_path, :class=>"waves-effect waves-red red accent-4 btn-large" %></li>
+            <li><%= link_to user_path(current_user) do current_user.name end %></li>
+            <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+          <% else %>
+            <li><%= link_to('Login', new_user_session_path) %></li>
+            <li><%= link_to "Register", new_user_registration_path %></li>
+          <% end %>
+        </ul>
       </div>
     </nav>
-
-    <div class="parallax-container">
-      <div class="parallax"><%= image_tag('wallpaper_parallax.png') %></div>
-    </div>
     <%= yield %>
   </body>
 </html>

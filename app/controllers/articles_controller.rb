@@ -28,7 +28,8 @@ class ArticlesController < ApplicationController
     end
 
     def create
-        @article = Article.new(article_params.merge(user_id: current_user.id))
+        current_time = Time.now.getutc
+        @article = Article.new(article_params.merge(user_id: current_user.id, published: current_time))
         if @article.save
         redirect_to @article, notice: "L'article a bien été publié"
         else

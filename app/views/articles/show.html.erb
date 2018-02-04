@@ -1,31 +1,47 @@
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
- 
-<p>
-  <strong>Date:</strong>
-  <%= @article.published %>
-</p>
-<p>
-    <strong>Chapo:</strong>
-    <%= @article.heading %>
-</p>
-<p>
-    <strong>Texte:</strong>
-    <%= @article.text %>
-</p>
-<p>
-    <strong>Auteur:</strong>
-    <%= @article.user.name %> 
-</p>
-<p>
-    Photo : <img src="<%= @article.image %>"/>
-</p>
-      <%- if current_user == @article.user && user_signed_in? %>
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Destroy', article_path(@article),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %>
-              <%- end %>
-<%= link_to 'Back', articles_path %> |
+<div class="row">
+  <div class="col s3 offset-s3">
+    <img src="<%= @article.image %>"/>
+  </div>
+
+  <div class="col s6">
+    <h3>Title:
+      <%= @article.title %></h3>
+  </div>
+
+  <div class="col s6">
+    <strong>Date:</strong>
+    <%= @article.published %>
+  </div>
+
+  <div class="col s12 offset-s3">
+    <div class="col s7">
+      <strong>Chapeau:</strong>
+      <%= @article.heading %>
+    </div>
+
+    <div class="col s7">
+      <strong>Texte:</strong>
+      <%= @article.text %>
+    </div>
+
+    <div class="col s7">
+      <strong>Auteur:</strong>
+      <%= @article.user.name %>
+    </div>
+  </div>
+
+<%- if current_user == @article.user && user_signed_in? %>
+  <div class="col s12 offset-s5">
+    <div class="btn waves-effect waves-light actions">
+      <%= link_to 'Edit', edit_article_path(@article) %>
+    </div>
+    <div class="btn waves-effect waves-light actions">
+      <%= link_to 'Destroy', article_path(@article), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+    <div class="btn waves-effect waves-light actions">
+      <%= link_to 'Back', articles_path %>
+    </div>
+  </div>
+  <%- end %>
+
+</div>

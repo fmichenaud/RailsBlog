@@ -7,3 +7,23 @@ $secondary: color("red", "lighten-2") !default;
 .parallax-container {
   height: 300px;
 }
+
+.nav-wrapper {
+  background-color: $primary;
+}
+
+nav {
+  margin-bottom: 50px;
+}
+
+a {
+  color: white;
+}
+
+.btn {
+  background-color: $primary;
+}
+
+#submit {
+  margin-top: 20px;
+}
