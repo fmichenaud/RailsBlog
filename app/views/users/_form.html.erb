@@ -1,0 +1,7 @@
+<%= form_for @user do |f| %>
+<%= @user.errors.full_messages if @user.errors.any? %>
+<%= f.text_field :name, placeholder: "Nom"%>
+
+<%= f.submit %>
+
+<% end %>

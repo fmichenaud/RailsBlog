@@ -11,8 +11,21 @@
     <strong>Chapo:</strong>
     <%= @article.heading %>
 </p>
+<p>
+    <strong>Texte:</strong>
+    <%= @article.text %>
+</p>
+<p>
+    <strong>Auteur:</strong>
+    <%= @article.user.name %> 
+</p>
+<p>
+    Photo : <img src="<%= @article.image %>"/>
+</p>
+      <%- if current_user == @article.user && user_signed_in? %>
 <%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %> |
 <%= link_to 'Destroy', article_path(@article),
               method: :delete,
               data: { confirm: 'Are you sure?' } %>
+              <%- end %>
+<%= link_to 'Back', articles_path %> |

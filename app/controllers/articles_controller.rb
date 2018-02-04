@@ -1,4 +1,7 @@
 class ArticlesController < ApplicationController
+    before_action :require_permission, only: [:edit, :destroy, :update]
+    before_action :authenticate_user!, :except => [:show, :index]
+
     def index
         @articles = Article.all
     end
@@ -25,9 +28,9 @@ class ArticlesController < ApplicationController
     end
 
     def create
-        @article = Article.new(article_params)
+        @article = Article.new(article_params.merge(user_id: current_user.id))
         if @article.save
-        redirect_to @article
+        redirect_to @article, notice: "L'article a bien été publié"
         else
             render 'new'
         end
@@ -36,12 +39,18 @@ class ArticlesController < ApplicationController
     def destroy
         @article = Article.find(params[:id])
         @article.destroy
- 
-        redirect_to articles_path
+
+        redirect_to articles_path, notice: "L'article a bien été supprimé"
     end
 
     private
         def article_params
-            params.require(:article).permit(:title, :published, :heading)
+            params.require(:article).permit(:title, :published, :user_id, :text, :heading, :image)
+        end
+        def require_permission
+            @userPermission = Article.find(params[:id]).user
+            if current_user != @userPermission
+                redirect_to root_path
+            end
         end
 end
