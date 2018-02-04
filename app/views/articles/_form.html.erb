@@ -3,8 +3,8 @@
 <% if @article.errors.any? %>
   <div id="error_explanation">
     <h2>
-      <%= pluralize(@article.errors.count, "error") %>
-      prohibited this article from being saved:
+      <%= pluralize(@article.errors.count, "erreur") %>
+      empêche l'enregistrement de cet article:
     </h2>
     <ul>
       <% @article.errors.full_messages.each do |msg| %>
@@ -35,9 +35,13 @@
 </div>
 
 <div class="col s10 offset-s1">
-  <p>
-    <%= form.file_field :image %>
-  </p>
+<div class="file-field input-field gallery_picture">
+      <div class="btn">
+        <span>Image</span>
+            <%= form.file_field :image, class: "file-path-wrapper" %>
+      </div>
+      <input class="file-path validate" type="text"/>
+</div>
 </div>
 
 <div class="col s11 offset-s1">
