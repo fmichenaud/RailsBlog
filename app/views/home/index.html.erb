@@ -27,6 +27,7 @@
               <p><%= article.heading %></p>
               <p>Publié le :
                 <%= article.created_at_before_type_cast %>
+                <p>Par : <%= link_to user_path(article.user) do article.user.name end %></p>
               </div>
               <div class="card-action">
                 <%= link_to 'Lire la suite', article_path(article) %>

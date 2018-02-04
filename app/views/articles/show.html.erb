@@ -26,7 +26,7 @@
 
     <div class="col s7">
       <strong>Auteur:</strong>
-      <%= @article.user.name %>
+      <%= link_to user_path(@article.user) do @article.user.name end %>
     </div>
   </div>
 
