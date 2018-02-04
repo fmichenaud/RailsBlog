@@ -17,7 +17,7 @@
 </p>
 <p>
     <strong>Auteur:</strong>
-    <%= @article.user.name %> 
+    <%= link_to user_path(@article.user) do  @article.user.name end %>
 </p>
 <p>
     Photo : <img src="<%= @article.image %>"/>

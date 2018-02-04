@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'home/index'
 
   resources :articles
-  resources :users 
+  resources :users, only: [:index, :show, :destroy]
   
   authenticate :user do
     resources :articles, only: [:new, :create, :edit, :update, :destroy]
