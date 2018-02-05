@@ -12,12 +12,10 @@
               </a>
               <ul>
                 <li>
-                  <a class="btn-floating red">
-                    <i class="material-icons">edit</i><%= link_to 'Edit', edit_article_path(article) %></a>
+                    <%= link_to raw("<i class=\"material-icons\">edit</i>"), edit_article_path(article), class: "btn-floating red"%>
                 </li>
                 <li>
-                  <a class="btn-floating blue">
-                    <i class="material-icons">delete</i><%= link_to 'Destroy', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %></a>
+                    <%= link_to raw("<i class=\"material-icons\">delete</i>"), article_path(article), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn-floating blue"%>           
                 </li>
               </ul>
             </div>
