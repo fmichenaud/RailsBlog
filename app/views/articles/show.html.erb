@@ -1,32 +1,23 @@
 <div class="row">
-  <div class="col s3 offset-s3">
-    <img src="<%= @article.image.small %>"/>
-  </div>
-
-  <div class="col s6">
-    <h3>Title:
-      <%= @article.title %></h3>
-  </div>
-
-  <div class="col s6">
-    <strong>Date:</strong>
-    <%= @article.published %>
-  </div>
-
-  <div class="col s12 offset-s3">
-    <div class="col s7">
-      <strong>Chapeau:</strong>
-      <%= @article.heading %>
+   <div class="parallax-container">
+      <div class="parallax"><img class="responsive-img" src="<%= @article.image %>"></div>
     </div>
 
-    <div class="col s7">
-      <strong>Texte:</strong>
-      <%= @article.text %>
+  <div class="col s12 center-align">
+    <h3><%= @article.title %></h3>
+
+    <div class="col s6 offset-s3">
+     <p> <%= @article.heading %> </p>
+        <div class="divider"></div>
+    </div>
+
+    <div class="col s6 offset-s3">
+     <p> <%= @article.text %> </p>
     </div>
 
     <div class="col s7">
       <strong>Auteur:</strong>
-      <%= link_to user_path(@article.user) do @article.user.name end %>
+      <%= link_to user_path(@article.user) do @article.user.name end %>, publié le <%= @article.published %>
     </div>
   </div>
 
