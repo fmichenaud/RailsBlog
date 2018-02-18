@@ -19,20 +19,70 @@
       <strong>Auteur:</strong>
       <%= link_to user_path(@article.user) do @article.user.name end %>, publié le <%= @article.published %>
     </div>
-  </div>
-
-<%- if current_user == @article.user && user_signed_in? %>
-  <div class="col s12 offset-s5">
+    <%- if current_user == @article.user && user_signed_in? %>
+  <div class="col s12 ">
     <div class="btn waves-effect waves-light actions">
       <%= link_to 'Edit', edit_article_path(@article) %>
     </div>
-    <div class="btn waves-effect waves-light actions">
+    <div class="btn waves-effect waves-red red actions">
       <%= link_to 'Destroy', article_path(@article), method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
-    <div class="btn waves-effect waves-light actions">
+    <div class="btn waves-effect waves-green green actions">
       <%= link_to 'Back', articles_path %>
     </div>
   </div>
   <%- end %>
+  </div>
+
+        <div class="divider"></div>
+
+    <div class="col s12 center-align">
+      <h3>Commentaires</h3>
+        <% @article.comments.each do |comment| %> 
+      <div class="col s6 offset-s3">
+        <p> <%= comment.body %> </p>
+        <p> Écrit par <b><%= comment.user.name %></b></p>
+        <%- if user_signed_in? %>
+          <%- if comment.user.id == current_user.id %>
+          <div class="col s12">
+            <div class="btn waves-effect waves-red red actions">
+              <%= link_to 'Destroy Comment', [comment.article, comment],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+            </div>
+          </div>
+          <%- end %>
+        <%- end %>
+      </div>  
+      <% end %>
+    </div>
+
+
+
+<div class="divider"></div>
+
+<%- if user_signed_in? %>
+<div class="col s12 center-align">
+  <h4>Ajouter un commentaire:</h4>
+  <div class="col s6 offset-s3">
+<%= form_with(model: [ @article, @article.comments.build ]) do |form| %>
+  <p>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+  </div>
+</div>
+
+<%- end %>
+</div>
+
+
+<% end %>
+
+
+
+
 
 </div>
